@@ -72,7 +72,7 @@ table, th, td {
 			</div>
 			<div class="form-group">
 				<form:label path="realisateur">Realisateur:</form:label>
-				<form:select path="realisateur" cssClass="form-control" items = "${film.realisateur}" itemLabel="${film.realisateur}" itemValue="id"/>
+				<form:select path="realisateur" cssClass="form-control" items = "${listeReal}" itemLabel="nom"/>
 			</div>
 			
 			
