@@ -35,5 +35,10 @@
 			<artifactId>formationJpaSpring</artifactId>
 			<version>1.0-SNAPSHOT</version>
 		</dependency>
-	</dependencies>
+		<dependency>
+			<groupId>sopra</groupId>
+			<artifactId>videoClubJpaSpring</artifactId>
+			<version>1.0-SNAPSHOT</version>
+		</dependency>
+		</dependencies>
 </project>
