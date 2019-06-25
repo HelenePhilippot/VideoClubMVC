@@ -3,7 +3,7 @@
 	xmlns="http://java.sun.com/xml/ns/javaee"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_4_0.xsd"
 	version="4.0">
-	<display-name>formationSpringMvc</display-name>
+	<display-name>projetVcMvc2</display-name>
 
 
 	<welcome-file-list>
