@@ -14,7 +14,7 @@
 </head>
 <body>
 <div class="container">
-		<form:form method="get" action="save" modelAttribute="adherent">
+		<form:form method="post" action="save" modelAttribute="adherent">
 			<form:hidden path="version" />
 			<div class="form-group">
 				<form:label path="civilite">civilite:</form:label>
@@ -30,10 +30,16 @@
 				<form:errors path="nom" cssClass="alert alert-danger" element="div"></form:errors>
 			</div>
 			<div class="form-group">
-				<form:label path="noAdherent">Numero adherent</form:label>
-				<form:input type="number" path="noAdherent" cssClass="form-control">
-				</form:input>
+				<form:label path="numero">Numero adherent</form:label>
+				<form:input type="number" path="numero" cssClass="form-control"/>
 			</div>
+			
+			<div class="form-group">
+                <form:label path="dtNaiss">date de naissance:</form:label>
+                <form:input type="date" path="dtNaiss" cssClass="form-control" />
+                <form:errors path="dtNaiss"></form:errors>
+            </div>
+            
 			<div class="form-group">
 				<form:label path="adresse.numero">numero:</form:label>
 				<form:input type="number" path="adresse.numero"
@@ -44,8 +50,8 @@
 				<form:input path="adresse.rue" cssClass="form-control" />
 			</div>
 			<div class="form-group">
-				<form:label path="adresse.cp">code postal:</form:label>
-				<form:input path="adresse.cp" cssClass="form-control" />
+				<form:label path="adresse.codePostal">code postal:</form:label>
+				<form:input path="adresse.codePostal" cssClass="form-control" />
 			</div>
 			<div class="form-group">
 				<form:label path="adresse.ville">ville:</form:label>
@@ -56,8 +62,6 @@
 				<a href="list" class="btn btn-warning">annuler</a>
 			</div>
 		</form:form>
-
 	</div>
-
 </body>
 </html>
