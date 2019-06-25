@@ -41,7 +41,7 @@ public class FilmController {
 		return goEditFilm(new Film());
 	}
 	public ModelAndView goEditFilm(Film film) {
-		return new ModelAndView("film/editFilm", "film", film);
+		return new ModelAndView("film/edit", "film", film);
 	}
 	
 	

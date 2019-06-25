@@ -78,7 +78,7 @@ table, th, td {
 			
 			<div class="form-group">
 				<button class="btn btn-success" type="submit">Enregistrer</button>
-				<a class="btn btn-warning" href="list">Annuler </a>
+				<a class="btn btn-warning" href="../article/list">Annuler </a>
 			</div>
 
 
