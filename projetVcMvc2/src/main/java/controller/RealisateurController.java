@@ -32,30 +32,26 @@ public class RealisateurController {
 
 	@GetMapping("/addRealisateur")
 	public ModelAndView addRealisateur() {
-		return goEdit(new Realisateur());
+		return goEditRealisateur(new Realisateur());
 	}
 
 
-	public ModelAndView goEdit(Realisateur realisateur) {
-		return new ModelAndView("realisateur/edit", "realisateur", realisateur);
+	public ModelAndView goEditRealisateur(Realisateur realisateur) {
+		return new ModelAndView("realisateur/editRealisateur", "realisateur", realisateur);
 	}
 
 
 	@PostMapping("/saveRealisateur")
-	public ModelAndView saveRealisateur(@ModelAttribute("realisateur") Realisateur b) {
-		return save(b);
-	}
-
-	private ModelAndView save(Realisateur realisateur) {
+	private ModelAndView saveRealisateur(Realisateur realisateur) {
 		realisateurRepository.save(realisateur);
 		return new ModelAndView("redirect:/article/list");
 	}
 
-	@GetMapping("/edit")
-	public ModelAndView edit(@RequestParam(name = "id") int id) {
+	@GetMapping("/editRealisateur")
+	public ModelAndView editRealisateur(@RequestParam(name = "id") int id) {
 		Optional<Realisateur> opt = realisateurRepository.findById(id);
 		if (opt.isPresent()) {
-			return goEdit(opt.get());
+			return goEditRealisateur(opt.get());
 		} else {
 			return new ModelAndView("redirect:/article/list");
 		}

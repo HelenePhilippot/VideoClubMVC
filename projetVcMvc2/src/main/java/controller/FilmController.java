@@ -38,25 +38,25 @@ public class FilmController {
 	 */
 	@GetMapping("/addFilm")
 	public ModelAndView addFilm() {
-		return goEdit(new Film());
+		return goEditFilm(new Film());
 	}
-	public ModelAndView goEdit(Film film) {
-		return new ModelAndView("film/edit", "film", film);
+	public ModelAndView goEditFilm(Film film) {
+		return new ModelAndView("film/editFilm", "film", film);
 	}
 	
 	
 	@PostMapping("/saveFilm")
-	private ModelAndView save (Film film) {
+	private ModelAndView saveFilm (Film film) {
 		filmRepository.save(film);
 		return new ModelAndView("redirect:/article/list");
 	}
 	
 	
-	@GetMapping("/edit")
-	public ModelAndView edit(@RequestParam(name="id") int id) {
+	@GetMapping("/editFilm")
+	public ModelAndView editFilm(@RequestParam(name="id") int id) {
 		Optional<Film> opt = filmRepository.findById(id);
 		if(opt.isPresent()) {
-			return goEdit(opt.get());}
+			return goEditFilm(opt.get());}
 		else {return new ModelAndView ("redirect:/article/list");}
 		}
 }
