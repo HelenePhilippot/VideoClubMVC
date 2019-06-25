@@ -2,7 +2,6 @@ package controller;
 
 import java.util.Optional;
 
-import javax.servlet.annotation.WebServlet;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,12 +10,12 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import videoClub.model.Adherent;
 import videoClub.repository.AdherentRepository;
-import videoClub.repository.ArticleRepository;
 
 
 @Controller
@@ -56,7 +55,7 @@ public class AdherentController
 		return goEdit(new Adherent(), model);
 	}
 	
-	@GetMapping("/save")
+	@PostMapping("/save")
 	public String save(@Valid @ModelAttribute("adherent") Adherent adherent, BindingResult br, Model model) 
 	{
 		if (br.hasErrors()) {
