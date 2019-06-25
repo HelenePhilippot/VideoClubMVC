@@ -42,8 +42,8 @@ public class AdherentController
 	}
 
 	@GetMapping("/edit")
-	public String edit(@RequestParam(name = "id") int id, Model model) {
-		Optional<Adherent> opt = adherentRepository.findById(id);
+	public String edit(@RequestParam(name = "numero") int numero, Model model) {
+		Optional<Adherent> opt = adherentRepository.findById(numero);
 		if (opt.isPresent()) {
 			return goEdit(opt.get(), model);
 		} else {
@@ -67,10 +67,10 @@ public class AdherentController
 	}
 
 	@GetMapping("/delete")
-	public String delete(@RequestParam(name = "id") int id) {
-		Optional<Adherent> opt = adherentRepository.findById(id);
+	public String delete(@RequestParam(name = "numero") int numero) {
+		Optional<Adherent> opt = adherentRepository.findById(numero);
 		if (opt.isPresent()) {
-			adherentRepository.deleteById(id);
+			adherentRepository.deleteById(numero);
 		}
 		return "redirect:/adherent/list";
 	}
