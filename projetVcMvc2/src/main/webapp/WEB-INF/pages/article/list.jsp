@@ -36,7 +36,7 @@ integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw
 			<tr>
 				<td>${a.id}</td>
 				<td>${a.film.titre}</td>
-				<td>${a.film.dateSortie}</td>
+				<td><fmt:formatDate value="${a.film.dateSortie}" pattern="dd/MM/yyyy"></fmt:formatDate></td>
 				<td>${a.film.realisateurs}</td>
 				<td>${a.numeroArticle}</td>
 				<td>${a.nbDisques}</td>
