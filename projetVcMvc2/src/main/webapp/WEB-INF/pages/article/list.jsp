@@ -16,7 +16,10 @@ integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw
 	<!-- ${listeSoldat}//permet de recup notre obj, donne son chemin -->
 	<div class="container"><br><br>
 		<a class = "btn btn-link" href="addDvd">ajouter un DVD</a>
-		<a class = "btn btn-link" href="addBluRay">ajouter un Bluray</a><br><br>
+		<a class = "btn btn-link" href="addBluRay">ajouter un Bluray</a>
+		<a class = "btn btn-link" href="addFilm">ajouter un Film</a>
+		<a class = "btn btn-link" href="addRealisateur">ajouter un Realisateur</a>
+		<br><br>
 		<table class="table">
 			<tr>
 				<th>ID</th>
