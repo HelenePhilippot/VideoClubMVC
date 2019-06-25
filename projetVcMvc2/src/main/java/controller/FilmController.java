@@ -13,11 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import videoClub.model.film;
-import videoClub.model.BluRay;
-import videoClub.model.Dvd;
 import videoClub.model.Film;
-import videoClub.repository.filmRepository;
 import videoClub.repository.FilmRepository;
 import videoClub.repository.RealisateurRepository;
 
