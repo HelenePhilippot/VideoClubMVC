@@ -17,6 +17,7 @@ import videoClub.model.Article;
 import videoClub.model.BluRay;
 import videoClub.model.Dvd;
 import videoClub.repository.ArticleRepository;
+import videoClub.repository.FilmRepository;
 
 
 @Controller
@@ -25,6 +26,9 @@ public class ArticleController {
 
 	@Autowired
 	private ArticleRepository articleRepository;
+	
+	@Autowired
+	private FilmRepository filmRepository;
 	
 	@GetMapping("/list")
 	public ModelAndView list() {//gere model et string en meme temps
@@ -41,14 +45,15 @@ public class ArticleController {
 	}
 	
 	@GetMapping("/addDvd")
-	public ModelAndView addDvd() {
-		return goEdit(new Dvd());
+	public ModelAndView addDvd(Model model) {
+		return goEdit(new Dvd(), model);
 	}
 	@GetMapping("/addBluRay")
-	public ModelAndView addBluRay() {
-		return goEdit(new BluRay());
+	public ModelAndView addBluRay(Model model) {
+		return goEdit(new BluRay(),model);
 	}
-	public ModelAndView goEdit(Article article) {
+	public ModelAndView goEdit(Article article, Model model) {
+		model.addAttribute("listeFilm", filmRepository.findAll());
 		return new ModelAndView("article/edit", "article", article);
 	}
 	
@@ -68,10 +73,10 @@ public class ArticleController {
 	
 	
 	@GetMapping("/edit")
-	public ModelAndView edit(@RequestParam(name="id") int id) {
+	public ModelAndView edit(@RequestParam(name="id") int id, Model model) {
 		Optional<Article> opt = articleRepository.findById(id);
 		if(opt.isPresent()) {
-			return goEdit(opt.get());}
+			return goEdit(opt.get(), model);}
 		else {return new ModelAndView ("redirect:/article/list");}
 		}
 }
