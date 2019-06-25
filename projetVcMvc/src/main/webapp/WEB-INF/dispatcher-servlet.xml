@@ -14,21 +14,11 @@
 		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
 
-	<mvc:annotation-driven validator="validator"
-		conversion-service="conversionService"></mvc:annotation-driven>
+	<mvc:annotation-driven validator="validator"></mvc:annotation-driven>
 
 	<context:component-scan
 		base-package="formationSpringMvc.controller"></context:component-scan>
 
-
-	<bean id="conversionService"
-		class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
-		<property name="converters">
-			<list>
-				<bean class="formationSpringMvc.converter.ArmeConverter"></bean>
-			</list>
-		</property>
-	</bean>
 
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
