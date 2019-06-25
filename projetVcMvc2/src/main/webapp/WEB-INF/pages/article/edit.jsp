@@ -55,7 +55,7 @@ table, th, td {
 			<c:when test="${article.getClass().simpleName=='Dvd'}">
 				<c:url value="saveA" var="action"></c:url>
 			</c:when>
-			<c:when test="${article.getClass().simpleName=='Bluray'}">
+			<c:when test="${article.getClass().simpleName=='BluRay'}">
 				<c:url value="saveB" var="action"></c:url>
 			</c:when>
 		</c:choose>
@@ -63,41 +63,42 @@ table, th, td {
 
 		<form:form method="post" action="${action}" modelAttribute="article">
 
-			<form:hidden path="version" value="${arme.version}" />
+			<form:hidden path="version" value="${article.version}" />
 
 			<div class="form-group">
 				<form:label path="id">id:</form:label>
 				<form:input cssClass="form-control" path="id" readonly="readonly"
-					value="${arme.id}" placeholder="Renseigné Automatiquement" />
+					value="${article.id}" placeholder="Renseigné Automatiquement" />
+			</div>
+			
+			
+			
+			<div class="form-group">
+				<form:label path="numeroArticle">Numéro d'article:</form:label>
+				<form:input type="number" cssClass="form-control"
+					path="numeroArticle" value="${article.numeroArticle}" />
 			</div>
 			<div class="form-group">
-				<form:label path="libelle">libelle:</form:label>
-				<form:input cssClass="form-control" path="libelle"
-					value="${arme.libelle}" />
+				<form:label path="nbDisques">Nombre de disques:</form:label>
+				<form:input type="number" cssClass="form-control" path="nbDisques" value="${article.nbDisques}" />
 			</div>
-			<div class="form-group">
-				<form:label path="dps">dps:</form:label>
-				<form:input type="number" step="0.1" cssClass="form-control"
-					path="dps" value="${arme.dps}" />
-			</div>
-			<!-- epée seulement -->
-			<c:if test="${arme.getClass().simpleName=='Epee'}">
+			<!-- dvd seulement -->
+			<c:if test="${article.getClass().simpleName=='BluRay'}">
 				<div class="form-group">
-					<form:label path="deuxMains">Deux Mains:</form:label>
-					<form:checkbox path="deuxMains" />
-					<form:errors path="deuxMains" cssClass="alert alert-danger"
+					<form:label path="troisD">3D:</form:label>
+					<form:checkbox path="troisD" />
+					<form:errors path="troisD" cssClass="alert alert-danger"
 						element="div"></form:errors>
 
 				</div>
 			</c:if>
 
-			<!-- gun seulement -->
-			<c:if test="${arme.getClass().simpleName=='Pistolet'}">
+			<!-- bluray seulement -->
+			<c:if test="${article.getClass().simpleName=='Dvd'}">
 				<div class="form-group">
-					<form:label path="cadence">Cadence:</form:label>
-					<form:input type="number" step="0.1" cssClass="form-control"
-						path="cadence" value="${arme.cadence}" />
-					<form:errors path="cadence" cssClass="alert alert-danger"
+					<form:label path="bonus">Bonus:</form:label>
+					<form:checkbox path="bonus" />
+					<form:errors path="bonus" cssClass="alert alert-danger"
 						element="div"></form:errors>
 
 				</div>
