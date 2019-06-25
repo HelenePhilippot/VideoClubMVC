@@ -53,10 +53,10 @@ table, th, td {
 		<h1>Editer un Article</h1>
 		<c:choose>
 			<c:when test="${article.getClass().simpleName=='Dvd'}">
-				<c:url value="saveA" var="action"></c:url>
+				<c:url value="saveDvd" var="action"></c:url>
 			</c:when>
 			<c:when test="${article.getClass().simpleName=='BluRay'}">
-				<c:url value="saveB" var="action"></c:url>
+				<c:url value="saveBluRay" var="action"></c:url>
 			</c:when>
 		</c:choose>
 
@@ -70,7 +70,18 @@ table, th, td {
 				<form:input cssClass="form-control" path="id" readonly="readonly"
 					value="${article.id}" placeholder="Renseigné Automatiquement" />
 			</div>
-			
+			<div class="form-group">
+				<form:label path="film.titre">Film:</form:label>
+				<form:input cssClass="form-control" path="film.titre" value="${article.film.titre}"/>
+			</div>
+			<div class="form-group">
+				<form:label path="film.dateSortie">Film:</form:label>
+				<form:input type = "date" cssClass="form-control" path="film.dateSortie" value="${article.film.dateSortie}"/>
+			</div>
+			<div class="form-group">
+				<form:label path="film.realisateur">Film:</form:label>
+				<form:input cssClass="form-control" path="film.realisateur" value="${article.film.realisateur}"/>
+			</div>
 			
 			
 			<div class="form-group">
