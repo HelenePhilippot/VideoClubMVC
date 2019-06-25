@@ -22,12 +22,13 @@ public class RealisateurController {
 	@Autowired
 	private RealisateurRepository realisateurRepository;
 
-	@GetMapping("/delete")
-	public String delete(@RequestParam(name = "id") int id, Model model) {
-		realisateurRepository.deleteById(id);
-		return "redirect:/article/list";
-
-	}
+	/*
+	 * @GetMapping("/delete") public String delete(@RequestParam(name = "id") int
+	 * id, Model model) { realisateurRepository.deleteById(id); return
+	 * "redirect:/article/list";
+	 * 
+	 * }
+	 */
 
 	@GetMapping("/addRealisateur")
 	public ModelAndView addRealisateur() {

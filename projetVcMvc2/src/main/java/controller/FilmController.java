@@ -28,13 +28,14 @@ public class FilmController {
 	
 	
 	
-	@GetMapping("/delete")
-	public String delete(@RequestParam(name="id") int id, Model model) {
-		filmRepository.deleteById(id);
-		return "redirect:/article/list";
-
-	
-	}
+	/*
+	 * @GetMapping("/delete") public String delete(@RequestParam(name="id") int id,
+	 * Model model) { filmRepository.deleteById(id); return
+	 * "redirect:/article/list";
+	 * 
+	 * 
+	 * }
+	 */
 	@GetMapping("/addFilm")
 	public ModelAndView addFilm() {
 		return goEdit(new Film());
