@@ -5,6 +5,7 @@ import java.util.Optional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import videoClub.model.Adherent;
 import videoClub.repository.AdherentRepository;
+import videoClub.repository.ArticleRepository;
 
 
 @Controller
@@ -24,8 +26,8 @@ public class AdherentController
 {    
 	@Autowired
 	private AdherentRepository adherentRepository;
-	//@Autowired
-	//private ArticleRepository articleRepository;
+	@Autowired
+	private ArticleRepository articleRepository;
 
 	@GetMapping("/list")
 	public String list(Model model) {
@@ -34,9 +36,17 @@ public class AdherentController
 		return "adherent/list";
 	}
 	
+	@GetMapping("/panier")
+	private String panier(@RequestParam(name = "numero") int numero, Model model)
+	{
+		model.addAttribute("listeArticles", adherentRepository.findByIdWithArticle(numero));
+		return "adherent/panier";
+	}
+	
+	
 	private String goEdit(Adherent adherent, Model model) {
 		model.addAttribute("adherent", adherent);
-		//model.addAttribute("article", articleRepository.findAll());
+		model.addAttribute("article", articleRepository.findAll());
 		return "adherent/edit";
 	}
 
