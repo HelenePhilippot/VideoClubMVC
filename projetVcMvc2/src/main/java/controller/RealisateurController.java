@@ -16,7 +16,7 @@ import videoClub.model.Realisateur;
 import videoClub.repository.RealisateurRepository;
 
 @Controller
-@RequestMapping("/article") //
+@RequestMapping("/realisateur") //
 public class RealisateurController {
 
 	@Autowired
@@ -37,7 +37,7 @@ public class RealisateurController {
 
 
 	public ModelAndView goEditRealisateur(Realisateur realisateur) {
-		return new ModelAndView("realisateur/editRealisateur", "realisateur", realisateur);
+		return new ModelAndView("realisateur/edit", "realisateur", realisateur);
 	}
 
 

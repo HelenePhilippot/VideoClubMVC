@@ -17,8 +17,8 @@ integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw
 	<div class="container"><br><br>
 		<a class = "btn btn-link" href="addDvd">ajouter un DVD</a>
 		<a class = "btn btn-link" href="addBluRay">ajouter un Bluray</a>
-		<a class = "btn btn-link" href="addFilm">ajouter un Film</a>
-		<a class = "btn btn-link" href="addRealisateur">ajouter un Realisateur</a>
+		<a class = "btn btn-link" href="../film/addFilm">ajouter un Film</a>
+		<a class = "btn btn-link" href="../realisateur/addRealisateur">ajouter un Realisateur</a>
 		<br><br>
 		<table class="table">
 			<tr>
@@ -40,7 +40,7 @@ integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw
 				<td>${a.id}</td>
 				<td>${a.film.titre}</td>
 				<td><fmt:formatDate value="${a.film.dateSortie}" pattern="dd/MM/yyyy"></fmt:formatDate></td>
-				<td>${a.film.realisateurs}</td>
+				<td>${a.film.realisateur.nom}&nbsp;${a.film.realisateur.prenom}</td>
 				<td>${a.numeroArticle}</td>
 				<td>${a.nbDisques}</td>
 				<td>${a.getClass().simpleName}</td>

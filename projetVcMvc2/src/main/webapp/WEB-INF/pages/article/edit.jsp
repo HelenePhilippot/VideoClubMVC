@@ -70,17 +70,10 @@ table, th, td {
 				<form:input cssClass="form-control" path="id" readonly="true"
 					value="${article.id}" placeholder="Renseigné Automatiquement" />
 			</div>
+			
 			<div class="form-group">
-				<form:label path="film.titre">Film:</form:label>
-				<form:input cssClass="form-control" path="film.titre" value="${article.film.titre}"/>
-			</div>
-			<div class="form-group">
-				<form:label path="film.dateSortie">Date de Sortie:</form:label>
-				<form:input type = "date" cssClass="form-control" path="film.dateSortie" value="${article.film.dateSortie}"/>
-			</div>
-			<div class="form-group">
-				<form:label path="film.realisateur">Realisateur:</form:label>
-				<form:input cssClass="form-control" path="film.realisateur" value="${article.film.realisateur}"/>
+				<form:label path="film.id">Film:</form:label>
+				<form:select path="film.id" cssClass="form-control" items = "${listeFilm}" itemLabel="titre" itemValue="id"/>
 			</div>
 			
 			

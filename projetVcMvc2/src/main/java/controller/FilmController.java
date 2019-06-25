@@ -37,11 +37,12 @@ public class FilmController {
 	 * }
 	 */
 	@GetMapping("/addFilm")
-	public ModelAndView addFilm() {
-		return goEditFilm(new Film());
+	public ModelAndView addFilm(Model model) {
+		return goEditFilm(new Film(), model);
 	}
-	public ModelAndView goEditFilm(Film film) {
-		return new ModelAndView("film/editFilm", "film", film);
+	public ModelAndView goEditFilm(Film film, Model model) {
+		model.addAttribute("listeReal", realisateurRepository.findAll());
+		return new ModelAndView("film/edit", "film", film);
 	}
 	
 	
@@ -53,10 +54,10 @@ public class FilmController {
 	
 	
 	@GetMapping("/editFilm")
-	public ModelAndView editFilm(@RequestParam(name="id") int id) {
+	public ModelAndView editFilm(@RequestParam(name="id") int id, Model model) {
 		Optional<Film> opt = filmRepository.findById(id);
 		if(opt.isPresent()) {
-			return goEditFilm(opt.get());}
+			return goEditFilm(opt.get(), model);}
 		else {return new ModelAndView ("redirect:/article/list");}
 		}
 }

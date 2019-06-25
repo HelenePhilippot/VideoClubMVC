@@ -71,14 +71,14 @@ table, th, td {
 				<form:input type = "date" cssClass="form-control" path="dateSortie" value="${film.dateSortie}"/>
 			</div>
 			<div class="form-group">
-				<form:label path="realisateur">Realisateur:</form:label>
-				<form:select path="realisateur" cssClass="form-control" items = "${film.realisateur}" itemLabel="${film.realisateur}" itemValue="id"/>
+				<form:label path="realisateur.id">Realisateur:</form:label>
+				<form:select path="realisateur.id" cssClass="form-control" items = "${listeReal}" itemLabel="nom" itemValue="id"/>
 			</div>
 			
 			
 			<div class="form-group">
 				<button class="btn btn-success" type="submit">Enregistrer</button>
-				<a class="btn btn-warning" href="list">Annuler </a>
+				<a class="btn btn-warning" href="../article/list">Annuler </a>
 			</div>
 
 
