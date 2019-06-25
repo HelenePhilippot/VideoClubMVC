@@ -72,8 +72,8 @@ table, th, td {
 			</div>
 			
 			<div class="form-group">
-				<form:label path="film">Film:</form:label>
-				<form:select path="film" cssClass="form-control" items = "${listeFilm}" itemLabel="titre"/>
+				<form:label path="film.id">Film:</form:label>
+				<form:select path="film.id" cssClass="form-control" items = "${listeFilm}" itemLabel="titre" itemValue="id"/>
 			</div>
 			
 			

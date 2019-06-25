@@ -71,8 +71,8 @@ table, th, td {
 				<form:input type = "date" cssClass="form-control" path="dateSortie" value="${film.dateSortie}"/>
 			</div>
 			<div class="form-group">
-				<form:label path="realisateur">Realisateur:</form:label>
-				<form:select path="realisateur" cssClass="form-control" items = "${listeReal}" itemLabel="nom"/>
+				<form:label path="realisateur.id">Realisateur:</form:label>
+				<form:select path="realisateur.id" cssClass="form-control" items = "${listeReal}" itemLabel="nom" itemValue="id"/>
 			</div>
 			
 			
