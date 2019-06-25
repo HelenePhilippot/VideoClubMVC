@@ -67,7 +67,7 @@ table, th, td {
 
 			<div class="form-group">
 				<form:label path="id">id:</form:label>
-				<form:input cssClass="form-control" path="id" readonly="readonly"
+				<form:input cssClass="form-control" path="id" readonly="true"
 					value="${article.id}" placeholder="Renseigné Automatiquement" />
 			</div>
 			<div class="form-group">
@@ -75,11 +75,11 @@ table, th, td {
 				<form:input cssClass="form-control" path="film.titre" value="${article.film.titre}"/>
 			</div>
 			<div class="form-group">
-				<form:label path="film.dateSortie">Film:</form:label>
+				<form:label path="film.dateSortie">Date de Sortie:</form:label>
 				<form:input type = "date" cssClass="form-control" path="film.dateSortie" value="${article.film.dateSortie}"/>
 			</div>
 			<div class="form-group">
-				<form:label path="film.realisateur">Film:</form:label>
+				<form:label path="film.realisateur">Realisateur:</form:label>
 				<form:input cssClass="form-control" path="film.realisateur" value="${article.film.realisateur}"/>
 			</div>
 			
