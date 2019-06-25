@@ -40,7 +40,7 @@ integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw
 				<td>${a.id}</td>
 				<td>${a.film.titre}</td>
 				<td><fmt:formatDate value="${a.film.dateSortie}" pattern="dd/MM/yyyy"></fmt:formatDate></td>
-				<td>${a.film.realisateur}</td>
+				<td>${a.film.realisateur.nom}&nbsp;${a.film.realisateur.prenom}</td>
 				<td>${a.numeroArticle}</td>
 				<td>${a.nbDisques}</td>
 				<td>${a.getClass().simpleName}</td>
