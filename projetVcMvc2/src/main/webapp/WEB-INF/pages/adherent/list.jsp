@@ -21,6 +21,7 @@
 				<th>prenom</th>
 				<th>nom</th>
 				<th>noAdherent</th>
+				<th>Date de naissance</th>
 				<th>rue</th>
 				<th>code postal</th>
 				<th>ville</th>
@@ -32,13 +33,14 @@
 					<td>${a.civilite}</td>
 					<td>${a.prenom}</td>
 					<td>${a.nom}</td>
-					<td>${a.noAdherent}</td>
-					<td>${s.adresse.numero}&nbsp;${s.adresse.rue}</td>
-					<td>${s.adresse.cp}</td>
-					<td>${s.adresse.ville}</td>
-					<td><a class="btn btn-info" href="edit?id=${s.id}">editer</a></td>
-					<td><a class="btn btn-danger" href="delete?id=${s.id}">supprimer</a></td>
-					<td><a class="btn btn-danger" href="listeArticle?id=${s.id}">liste des articles</a></td>
+					<td>${a.numero}</td>
+					<td>${a.dtNaiss}</td>
+					<td>${a.adresse.numero}&nbsp;${a.adresse.rue}</td>
+					<td>${a.adresse.codePostal}</td>
+					<td>${a.adresse.ville}</td>
+					<td><a class="btn btn-info" href="edit?numero=${a.numero}">editer</a></td>
+					<td><a class="btn btn-danger" href="delete?numero=${a.numero}">supprimer</a></td>
+					<td><a class="btn btn-warning" href="listeArticle?numero=${a.numero}">liste des articles</a></td>
 				</tr>
 			</c:forEach>
 		</table>
