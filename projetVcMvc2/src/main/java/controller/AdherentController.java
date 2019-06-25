@@ -25,7 +25,7 @@ public class AdherentController
 {    
 	@Autowired
 	private AdherentRepository adherentRepository;
-	@Autowired
+	//@Autowired
 	//private ArticleRepository articleRepository;
 
 	@GetMapping("/list")
