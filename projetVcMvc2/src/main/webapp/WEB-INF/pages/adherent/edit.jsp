@@ -19,8 +19,8 @@
 			<form:hidden path="version" />
 			<div class="form-group">
 				<form:label path="civilite">civilite:</form:label>
-				<form:select path="titre" cssClass="form-control">
-					<form:options items="${civilite}" itemLabel="label"/>
+				<form:select path="civilite" cssClass="form-control">
+					<form:options/>
 				</form:select>
 
 			</div>
