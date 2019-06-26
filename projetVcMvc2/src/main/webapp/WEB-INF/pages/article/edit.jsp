@@ -70,13 +70,14 @@ table, th, td {
 				<form:input cssClass="form-control" path="id" readonly="true"
 					value="${article.id}" placeholder="Renseigné Automatiquement" />
 			</div>
-			
+
 			<div class="form-group">
 				<form:label path="film.id">Film:</form:label>
-				<form:select path="film.id" cssClass="form-control" items = "${listeFilm}" itemLabel="titre" itemValue="id"/>
+				<form:select path="film.id" cssClass="form-control"
+					items="${listeFilm}" itemLabel="titre" itemValue="id" />
 			</div>
-			
-			
+
+
 			<div class="form-group">
 				<form:label path="numeroArticle">Numéro d'article:</form:label>
 				<form:input type="number" cssClass="form-control"
@@ -84,7 +85,8 @@ table, th, td {
 			</div>
 			<div class="form-group">
 				<form:label path="nbDisques">Nombre de disques:</form:label>
-				<form:input type="number" cssClass="form-control" path="nbDisques" value="${article.nbDisques}" />
+				<form:input type="number" cssClass="form-control" path="nbDisques"
+					value="${article.nbDisques}" />
 			</div>
 			<!-- dvd seulement -->
 			<c:if test="${article.getClass().simpleName=='BluRay'}">

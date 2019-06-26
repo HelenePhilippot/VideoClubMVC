@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import videoClub.model.Adherent;
+import videoClub.model.Article;
 import videoClub.repository.AdherentRepository;
 import videoClub.repository.ArticleRepository;
 
@@ -39,7 +40,8 @@ public class AdherentController
 	@GetMapping("/panier")
 	private String panier(@RequestParam(name = "numero") int numero, Model model)
 	{
-		//model.addAttribute("listeArticles", articleRepository.findByEmprunteur(numero));
+		model.addAttribute("listeArticles", articleRepository.findByEmprunteur(adherentRepository.findById(numero).get()));
+		model.addAttribute("ajoutArticle", articleRepository.findAll());
 		return "adherent/panier";
 	}
 	
@@ -64,6 +66,7 @@ public class AdherentController
 	public String add(Model model) {
 		return goEdit(new Adherent(), model);
 	}
+
 	
 	@PostMapping("/save")
 	public String save(@Valid @ModelAttribute("adherent") Adherent adherent, BindingResult br, Model model) 
@@ -73,6 +76,15 @@ public class AdherentController
 		}
 		adherentRepository.save(adherent);
 		return "redirect:/adherent/list";
+	}
+	@PostMapping("/saveArticle")
+	public String saveArticle(@Valid @ModelAttribute("article") Article article, BindingResult br, Model model) 
+	{
+		if (br.hasErrors()) {
+			return "adherent/panier";
+		}
+		articleRepository.save(article);
+		return "adherent/panier";
 	}
 
 	@GetMapping("/delete")

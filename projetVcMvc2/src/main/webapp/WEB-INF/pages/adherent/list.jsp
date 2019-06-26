@@ -76,7 +76,7 @@ table, th, td {
 					<td>${a.adresse.ville}</td>
 					<td><a class="btn btn-info" href="edit?numero=${a.numero}">editer</a></td>
 					<td><a class="btn btn-danger" href="delete?numero=${a.numero}">supprimer</a></td>
-					<td><a class="btn btn-warning" href="listeArticl0e?numero=${a.numero}">liste des articles</a></td>
+					<td><a class="btn btn-warning" href="panier?numero=${a.numero}">liste des articles</a></td>
 				</tr>
 			</c:forEach>
 		</table>
