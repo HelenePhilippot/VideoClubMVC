@@ -6,19 +6,23 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Modifier un adhérent</title>
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
 	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
 	crossorigin="anonymous">
 </head>
 <body>
-<div class="container">
+	<h1>Editer un Adherent</h1>
+	<div class="container">
 		<form:form method="post" action="save" modelAttribute="adherent">
 			<form:hidden path="version" />
 			<div class="form-group">
 				<form:label path="civilite">civilite:</form:label>
-				<form:input path="civilite" cssClass="form-control" />
+				<form:select path="titre" cssClass="form-control">
+					<form:options items="${civilite}" itemLabel="label"/>
+				</form:select>
+
 			</div>
 			<div class="form-group">
 				<form:label path="prenom">prenom:</form:label>
@@ -31,15 +35,15 @@
 			</div>
 			<div class="form-group">
 				<form:label path="numero">Numero adherent</form:label>
-				<form:input type="number" path="numero" cssClass="form-control"/>
+				<form:input type="number" path="numero" cssClass="form-control" />
 			</div>
-			
+
 			<div class="form-group">
-                <form:label path="dtNaiss">date de naissance:</form:label>
-                <form:input type="date" path="dtNaiss" cssClass="form-control" />
-                <form:errors path="dtNaiss"></form:errors>
-            </div>
-            
+				<form:label path="dtNaiss">date de naissance:</form:label>
+				<form:input type="date" path="dtNaiss" cssClass="form-control" />
+				<form:errors path="dtNaiss"></form:errors>
+			</div>
+
 			<div class="form-group">
 				<form:label path="adresse.numero">numero:</form:label>
 				<form:input type="number" path="adresse.numero"

@@ -6,13 +6,49 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Liste des Adherents</title>
 <link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 	crossorigin="anonymous">
+
+<style>
+.button {
+	background-color: #1c87c9;
+	border: none;
+	color: white;
+	padding: 10px 24px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	margin: 3px 2px;
+	cursor: pointer;
+}
+
+table {
+	font-family: arial, sans-serif;
+	border-collapse: collapse;
+	width: 100%;
+}
+
+td, th {
+	border: 1px solid #dddddd;
+	text-align: left;
+	padding: 8px;
+}
+
+tr:nth-child(even) {
+	background-color: #dddddd;
+}
+
+table, th, td {
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+</style>
 </head>
 <body>
+<h1>Liste des Adhérents</h1>
 	<div class="container">
 		<a href="add" class="btn btn-link">ajouter</a>
 		<table class="table">
@@ -40,7 +76,7 @@
 					<td>${a.adresse.ville}</td>
 					<td><a class="btn btn-info" href="edit?numero=${a.numero}">editer</a></td>
 					<td><a class="btn btn-danger" href="delete?numero=${a.numero}">supprimer</a></td>
-					<td><a class="btn btn-warning" href="listeArticle?numero=${a.numero}">liste des articles</a></td>
+					<td><a class="btn btn-warning" href="listeArticl0e?numero=${a.numero}">liste des articles</a></td>
 				</tr>
 			</c:forEach>
 		</table>

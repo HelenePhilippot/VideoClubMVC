@@ -39,7 +39,7 @@ public class AdherentController
 	@GetMapping("/panier")
 	private String panier(@RequestParam(name = "numero") int numero, Model model)
 	{
-		model.addAttribute("listeArticles", adherentRepository.findByIdWithArticle(numero));
+		//model.addAttribute("listeArticles", articleRepository.findByEmprunteur(numero));
 		return "adherent/panier";
 	}
 	
