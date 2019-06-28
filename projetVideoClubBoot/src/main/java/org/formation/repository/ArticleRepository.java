@@ -7,8 +7,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import metier.Adherent;
-import metier.Article;
+import  org.formation.metier.Adherent;
+import  org.formation.metier.Article;
 
 public interface ArticleRepository extends JpaRepository<Article, Integer> {
 	@Query("select a from Article a where a.emprunteur=:adherent")
