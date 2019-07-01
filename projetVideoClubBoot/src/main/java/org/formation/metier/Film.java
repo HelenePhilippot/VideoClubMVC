@@ -19,7 +19,10 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Version;
 
+import org.formation.metier.view.JsonViews;
 import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonView;
 
 @Entity
 @Table(name = "film")
@@ -28,18 +31,23 @@ public class Film {
 	@SequenceGenerator(name = "seqFilm", sequenceName = "seq_film", initialValue = 100, allocationSize = 1)
 	@GeneratedValue(generator = "seqFilm", strategy = GenerationType.SEQUENCE)
 	@Column(name = "id_film")
+	@JsonView(JsonViews.Common.class)
 	private Integer id;
 	@Column(name = "titre", length = 150)
+	@JsonView(JsonViews.Common.class)
 	private String titre;
 	@Column(name = "date_sortie")
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	@Temporal(TemporalType.DATE)
+	@JsonView(JsonViews.Common.class)
 	private Date dateSortie;
 	@OneToMany(mappedBy = "film")
+	@JsonView(JsonViews.Common.class)
 	private Set<Article> articles;
 	@Version
 	private int version;
 	@OneToOne
+	@JsonView(JsonViews.Common.class)
 	private Realisateur realisateur;
 	
 	public Film() {

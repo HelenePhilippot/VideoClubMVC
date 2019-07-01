@@ -17,6 +17,10 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Version;
 
+import org.formation.metier.view.JsonViews;
+
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 @Table(name = "article")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
@@ -27,16 +31,21 @@ public abstract class Article {
 	@Id
 	@SequenceGenerator(name = "seqArticle", sequenceName = "seq_article", initialValue = 200, allocationSize = 1)
 	@GeneratedValue(generator = "seqArticle", strategy = GenerationType.SEQUENCE)
+	@JsonView(JsonViews.Common.class)
 	private Integer id;
 	@Column(name = "numero_article")
+	@JsonView(JsonViews.Common.class)
 	private Integer numeroArticle;
 	@Column(name = "nb_disques")
+	@JsonView(JsonViews.Common.class)
 	private Integer nbDisques;
 	@ManyToOne
 	@JoinColumn(name = "film_id")
+	@JsonView(JsonViews.Common.class)
 	private Film film;
 	@ManyToOne
 	@JoinColumn(name = "adherent_id")
+	@JsonView(JsonViews.ArticleAvecEmprunteur.class)
 	private Adherent emprunteur;
 	@Version
 	private int version;
