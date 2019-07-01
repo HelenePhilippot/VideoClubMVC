@@ -8,18 +8,19 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ApplicationService implements CommandLineRunner{
+public class ApplicationService implements CommandLineRunner {
 
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 	@Autowired
 	private UserRepository userRepository;
-	
+
 	@Override
 	public void run(String... args) throws Exception {
 		for(User user : userRepository.findAll()) {
-			user.setPassword(passwordEncoder.encode(user.getPassword()));//pour encoder les MDP
+			user.setPassword(passwordEncoder.encode("toto"));//pour encoder les MDP
 			userRepository.save(user);
 		
+		 }
 	}
-	}}
+}
