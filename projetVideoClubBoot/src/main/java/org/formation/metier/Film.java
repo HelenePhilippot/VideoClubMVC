@@ -22,6 +22,7 @@ import javax.persistence.Version;
 import org.formation.metier.view.JsonViews;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonView;
 
 @Entity
@@ -42,12 +43,12 @@ public class Film {
 	@JsonView(JsonViews.Common.class)
 	private Date dateSortie;
 	@OneToMany(mappedBy = "film")
-	@JsonView(JsonViews.Common.class)
+	@JsonIgnore
 	private Set<Article> articles;
 	@Version
 	private int version;
 	@OneToOne
-	@JsonView(JsonViews.Common.class)
+	@JsonView(JsonViews.FilmAvecRealisateur.class)
 	private Realisateur realisateur;
 	
 	public Film() {

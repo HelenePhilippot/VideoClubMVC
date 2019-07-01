@@ -19,6 +19,7 @@ import javax.persistence.Version;
 
 import org.formation.metier.view.JsonViews;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonView;
 
 @Entity
@@ -41,7 +42,7 @@ public abstract class Article {
 	private Integer nbDisques;
 	@ManyToOne
 	@JoinColumn(name = "film_id")
-	@JsonView(JsonViews.Common.class)
+	@JsonView(JsonViews.ArticleAvecFilm.class)
 	private Film film;
 	@ManyToOne
 	@JoinColumn(name = "adherent_id")

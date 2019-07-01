@@ -38,7 +38,7 @@ public class Realisateur {
 	@Version
 	private int version;
 	@OneToOne
-	@JsonView(JsonViews.Common.class)
+	@JsonView(JsonViews.RealisateurAvecFilm.class)
 	private Film film;
 
 	public Realisateur() {

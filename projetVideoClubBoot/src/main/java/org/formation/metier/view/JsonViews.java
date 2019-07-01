@@ -21,5 +21,7 @@ public class JsonViews {
 
 	public static class ArticleAvecFilm extends Common {
 	};
+	public static class RealisateurAvecFilm extends Common {
+	};
 
 }

@@ -56,34 +56,34 @@ public class ArticleRestController {
 		}
 		articleRepository.save(article);
 		HttpHeaders headers=new HttpHeaders();
-		URI uri=ucb.path("/rest/article/{id}").buildAndExpand(article.getId()).toUri();
+		URI uri=ucb.path("/rest/article/{numero}").buildAndExpand(article.getId()).toUri();
 		headers.setLocation(uri);
 		return new ResponseEntity<Void>(headers,HttpStatus.CREATED);
 	}
 	
-	@GetMapping(value= {"/{id}"})
+	@GetMapping(value= {"/{numero}"})
 	@JsonView(JsonViews.Common.class)
-	public ResponseEntity<Article> findById(@PathVariable(name="id")Integer id){
-		return findArticleById(id);
+	public ResponseEntity<Article> findById(@PathVariable(name="numero")Integer numero){
+		return findArticleById(numero);
 	}
 	
-	@GetMapping(value= {"/{id}/film"})
+	@GetMapping(value= {"/{numero}/film"})
 	@JsonView(JsonViews.ArticleAvecFilm.class)
-	public ResponseEntity<Article> findByIdWithFilm(@PathVariable(name="id")Integer id){
-		return findArticleById(id);
+	public ResponseEntity<Article> findByIdWithFilm(@PathVariable(name="numero")Integer numero){
+		return findArticleById(numero);
 	}
 	
-	private ResponseEntity<Article> findArticleById( Integer id){
-		Optional<Article> opt=articleRepository.findById(id);
+	private ResponseEntity<Article> findArticleById( Integer numero){
+		Optional<Article> opt=articleRepository.findById(numero);
 		if (opt.isPresent()) {
 			return new ResponseEntity<Article>(opt.get(), HttpStatus.OK);
 		}
 		return new ResponseEntity<Article>(HttpStatus.NOT_FOUND);
 	}
 	
-	@PutMapping(value= {"/{id}"})
-	public ResponseEntity<Article> update(@PathVariable(name="id") Integer id,@Valid@RequestBody Article article){
-		Optional<Article> opt=articleRepository.findById(id);
+	@PutMapping(value= {"/{numero}"})
+	public ResponseEntity<Article> update(@PathVariable(name="numero") Integer numero,@Valid@RequestBody Article article){
+		Optional<Article> opt=articleRepository.findById(numero);
 		if (opt.isPresent()) {
 			Article articleEnBase=opt.get();//versionàjour
 			articleEnBase.setEmprunteur((article.getEmprunteur()!=null)?article.getEmprunteur():articleEnBase.getEmprunteur());
@@ -97,10 +97,10 @@ public class ArticleRestController {
 	}
 	
 	@DeleteMapping("/{id}")
-	public ResponseEntity<Article> delete(@PathVariable(name="id") Integer id){
-		Optional<Article> opt=articleRepository.findById(id);
+	public ResponseEntity<Article> delete(@PathVariable(name="numero") Integer numero){
+		Optional<Article> opt=articleRepository.findById(numero);
 		if (opt.isPresent()) {
-			articleRepository.deleteById(id);
+			articleRepository.deleteById(numero);
 			return new  ResponseEntity<>(HttpStatus.NO_CONTENT);
 		}
 		return new  ResponseEntity<>(HttpStatus.NOT_FOUND);

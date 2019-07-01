@@ -67,7 +67,7 @@ public class FilmRestController {
 		return findFilmById(id);
 	}
 	
-	@GetMapping(value= {"/{id}/film"})
+	@GetMapping(value= {"/{id}/realisateur"})
 	@JsonView(JsonViews.FilmAvecRealisateur.class)
 	public ResponseEntity<Film> findByIdWithRealisateur(@PathVariable(name="id")Integer id){
 		return findFilmById(id);
