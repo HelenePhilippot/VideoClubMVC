@@ -6,6 +6,9 @@ import java.util.Optional;
 
 import javax.validation.Valid;
 
+import org.formation.metier.*;
+import org.formation.metier.view.JsonViews;
+import org.formation.repository.AdherentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -23,9 +26,6 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
-import org.formation.metier.Adherent;
-import org.formation.metier.view.*;
-import org.formation.repository.AdherentRepository;
 
 @RestController
 @RequestMapping("/rest/adherent")
@@ -56,36 +56,36 @@ public class AdherentRestController {
 		}
 		adherentRepository.save(adherent);
 		HttpHeaders headers=new HttpHeaders();
-		URI uri=ucb.path("/rest/adherent/{id}").buildAndExpand(adherent.getNumero()).toUri();
+		URI uri=ucb.path("/rest/adherent/{numero}").buildAndExpand(adherent.getNumero()).toUri();
 		headers.setLocation(uri);
 		return new ResponseEntity<Void>(headers,HttpStatus.CREATED);
 	}
 	
-	@GetMapping(value= {"/{id}"})
+	@GetMapping(value= {"/{numero}"})
 	@JsonView(JsonViews.Common.class)
-	public ResponseEntity<Adherent> findById(@PathVariable(name="id")Integer id){
-		return findAdherentById(id);
+	public ResponseEntity<Adherent> findById(@PathVariable(name="numero")Integer numero){
+		return findAdherentById(numero);
 	}
 	
-	@GetMapping(value= {"/{id}/article"})
+	@GetMapping(value= {"/{numero}/article"})
 	@JsonView(JsonViews.AdherentAvecArticles.class)
-	public ResponseEntity<Adherent> findByIdWithArme(@PathVariable(name="id")Integer id){
-		return findAdherentById(id);
+	public ResponseEntity<Adherent> findByIdWithArticle(@PathVariable(name="numero")Integer numero){
+		return findAdherentById(numero);
 	}
 	
-	private ResponseEntity<Adherent> findAdherentById( Integer id){
-		Optional<Adherent> opt=adherentRepository.findById(id);
+	private ResponseEntity<Adherent> findAdherentById( Integer numero){
+		Optional<Adherent> opt=adherentRepository.findById(numero);
 		if (opt.isPresent()) {
 			return new ResponseEntity<Adherent>(opt.get(), HttpStatus.OK);
 		}
 		return new ResponseEntity<Adherent>(HttpStatus.NOT_FOUND);
 	}
 	
-	@PutMapping(value= {"/{id}"})
-	public ResponseEntity<Adherent> update(@PathVariable(name="id") Integer id,@Valid@RequestBody Adherent adherent){
+	@PutMapping(value= {"/{numero}"})
+	public ResponseEntity<Adherent> update(@PathVariable(name="numero") Integer id,@Valid@RequestBody Adherent adherent){
 		Optional<Adherent> opt=adherentRepository.findById(id);
 		if (opt.isPresent()) {
-			Adherent adherentEnBase=opt.get();//versionàjour
+			Adherent adherentEnBase=opt.get();//version à jour
 			adherentEnBase.setPrenom((adherent.getPrenom()!=null)?adherent.getPrenom():adherentEnBase.getPrenom());
 			adherentEnBase.setNom((adherent.getNom()!=null)?adherent.getNom():adherentEnBase.getNom());
 			adherentEnBase.setDtNaiss((adherent.getDtNaiss()!=null)?adherent.getDtNaiss():adherentEnBase.getDtNaiss());
@@ -98,11 +98,11 @@ public class AdherentRestController {
 		return new  ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
 	
-	@DeleteMapping("/{id}")
-	public ResponseEntity<Adherent> delete(@PathVariable(name="id") Integer id){
-		Optional<Adherent> opt=adherentRepository.findById(id);
+	@DeleteMapping("/{numero}")
+	public ResponseEntity<Adherent> delete(@PathVariable(name="numero") Integer numero){
+		Optional<Adherent> opt=adherentRepository.findById(numero);
 		if (opt.isPresent()) {
-			adherentRepository.deleteById(id);
+			adherentRepository.deleteById(numero);
 			return new  ResponseEntity<>(HttpStatus.NO_CONTENT);
 		}
 		return new  ResponseEntity<>(HttpStatus.NOT_FOUND);
