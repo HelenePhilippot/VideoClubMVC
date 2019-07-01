@@ -30,12 +30,15 @@ public class Realisateur {
 	@JsonView(JsonViews.Common.class)
 	private Integer id;
 	@Column(name = "prenom_realisateur", length = 200)
+	@JsonView(JsonViews.Common.class)
 	private String prenom;
 	@Column(name = "nom_realisateur", length = 200)
+	@JsonView(JsonViews.Common.class)
 	private String nom;
 	@Version
 	private int version;
 	@OneToOne
+	@JsonView(JsonViews.Common.class)
 	private Film film;
 
 	public Realisateur() {
