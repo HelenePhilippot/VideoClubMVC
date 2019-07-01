@@ -23,16 +23,16 @@
 				<input type="hidden" name="${_csrf.parameterName}"
 					value="${_csrf.token}">
 				<div class="form-group">
-					<label for="username">login:</label> <input id="username"
+					<label for="username">Login:</label> <input id="username"
 						class="form-control" name=username>
 				</div>
 				<div class="form-group">
-					<label for="password">password:</label> <input type="password"
+					<label for="password">Password:</label> <input type="password"
 						id="password" name=password class="form-control">
 				</div>
 				<div class="form-group">
-					<input type="submit" value="S'identifier" class="btn btn-success">
-					<a href="/boot" class="btn btn-warning" id="password" name="password">Annuler</a>
+					<input type="submit" value="envoyer" class="btn btn-success">
+					<a href="/boot" class="btn btn-warning" >Annuler</a>
 				</div>
 			</form>
 		</div>

@@ -15,8 +15,9 @@
 <body>
 	<div class="container">
 		<header>
-			<a href="soldat/list" class="btn btn-link">Liste des Soldats</a> <a
-				href="arme/list" class="btn btn-link">Liste des Armes</a>
+			<a href="article/list" class="btn btn-link">Liste des Articles</a> 
+			<a href="adherent/list" class="btn btn-link">Liste des Adhérents</a>
+			<a href="panier" class="btn btn-link">Panier</a>
 			<c:choose>
 				<c:when test="${pageContext.request.userPrincipal.name!=null}">
 					<c:url var="action" value="/logout"></c:url>
@@ -28,12 +29,12 @@
 				</c:when>
 				<c:otherwise>
 					<a href="login" class="btn btn-link">Connexion</a>
-					<a href="formUser" class="btn btn-link">Nouvel Utilisateur</a>
+					<a href="user" class="btn btn-link">Inscription</a>
 				</c:otherwise>
 			</c:choose>
 		</header>
 		<div>
-			<h1>Bienvenue sur mon premier site en Spring Boot !</h1>
+			<h1>Bienvenue sur VideoClub!! </h1>
 		</div>
 
 		<footer></footer>

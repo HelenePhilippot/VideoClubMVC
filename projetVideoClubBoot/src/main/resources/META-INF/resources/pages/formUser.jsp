@@ -51,11 +51,11 @@ table, th, td {
 <h1>Nouvel Utilisateur</h1>
 	<div class="container">
 	<c:url var="action" value="/user/save"/>
-		<form:form method="post" action="${action}" modelAttribute="soldat">
-			<form:hidden path="version" />
+		<form:form method="post" action="${action}" modelAttribute="user">
+			
 			<div class="form-group">
 				<form:label path="username">Username:</form:label>
-				<form:input path="username"/>
+				<form:input path="username" cssClass="form-control"/>
 			</div>
 			<div class="form-group">
 				<form:label path="password">Password:</form:label>
@@ -65,7 +65,8 @@ table, th, td {
 			
 			<div class="form-group">
 				<button type="submit" class="btn btn-success">Enregistrer</button>
-				<a href="${accueil}" class="btn btn-warning">Annuler</a>
+				<c:url var="home" value="/"></c:url>
+				<a href="${home}" class="btn btn-warning">Annuler</a>
 			</div>
 		</form:form>
 
