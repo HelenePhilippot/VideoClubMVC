@@ -1,5 +1,6 @@
 package org.formation.service;
 
+import org.formation.metier.User;
 import org.formation.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -16,7 +17,9 @@ public class ApplicationService implements CommandLineRunner{
 	
 	@Override
 	public void run(String... args) throws Exception {
-		// TODO Auto-generated method stub
+		for(User user : userRepository.findAll()) {
+			user.setPassword(passwordEncoder.encode(user.getPassword()));//pour encoder les MDP
+			userRepository.save(user);
 		
 	}
-}
+	}}
