@@ -23,7 +23,11 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Version;
 
+import org.formation.metier.view.JsonViews;
 import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonView;
 
 @Entity
 @Table(name = "adherent")
@@ -36,26 +40,33 @@ public class Adherent {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqAdherent")
 	@SequenceGenerator(name = "seqAdherent", sequenceName = "seq_adherent", initialValue = 100, allocationSize = 1)
 	@Column(name = "no_adherent")
+	@JsonView(JsonViews.Common.class)
 	private Integer numero;
 	@Column(name = "prenom_adherent", length = 150)
+	@JsonView(JsonViews.Common.class)
 	private String prenom;
 	@Column(name = "nom_adherent", length = 100, nullable = false)
+	@JsonView(JsonViews.Common.class)
 	private String nom;
 	@Enumerated(EnumType.STRING)
 	@Column(name = "civilite", length = 4)
+	@JsonView(JsonViews.Common.class)
 	private Titre civilite;
 	@Embedded
 	@AttributeOverrides({ @AttributeOverride(name = "numero", column = @Column(name = "numero_rue_adherent")),
 			@AttributeOverride(name = "rue", column = @Column(name = "rue_adherent", length = 150)),
 			@AttributeOverride(name = "codePostal", column = @Column(name = "code_postal_adherent", length = 5)),
 			@AttributeOverride(name = "ville", column = @Column(name = "ville_adherent", length = 150)) })
+	@JsonView(JsonViews.Common.class)
 	private Adresse adresse;
+	@JsonView(JsonViews.AdherentAvecArticles.class)
 	@OneToMany(mappedBy = "emprunteur", fetch = FetchType.LAZY)
 	private List<Article> articlesEmpruntes;
 	@Version
 	private int version;
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	@Temporal(TemporalType.DATE)
+	@JsonView(JsonViews.Common.class)
 	private Date dtNaiss;
 
 	public Adherent() {
